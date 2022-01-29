@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif !important;
+}
+
+p {
+  font-size: 15px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.navbar {
+  background-color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+.navbar-nav {
+  margin-left: auto !important;
+}
+
+.smallimg {
+  height: 200px;
+  width: 100% !important;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+.btn {
+  background-color: black !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(161, 160, 160) !important;
+  color: black !important;
+}
+
+.bs {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: 20px;
+  border-radius: 5px !important;
+  padding: 20px !important;
+  background-color: rgb(231, 231, 231);
+}
+
+.home {
+  justify-content: center;
+}
+
+.bigimg {
+  height: 400px;
+}
+
+input,
+select,
+.ant-picker {
+  border: black solid 1px !important;
+  box-shadow: none !important;
+  margin-top: 10px;
+  border-radius: 3px !important;
+  width: 100% !important;
+  height: 35px !important;
+}
+
+h2 {
+  font-size: 30px;
+  text-align: center !important;
+}
+
+.ant-picker-input input {
+  border: none !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: black !important;
+  font-weight: 500 !important;
+}
+
+.ant-tabs-ink-bar {
+  background: black !important;
+}
+
+.ant-tabs-tab-btn:hover {
+  color: black !important;
+  font-weight: 500 !important;
+}
+
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+  background-color: rgb(231, 231, 231);
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: black !important;
+}
+
+.landing {
+  position: relative;
+  display: flex;
+  background-image: url("https://cache.marriott.com/marriottassets/marriott/CLTLC/cltlc-lobby-7728-hor-wide.jpg?interpolation=progressive-bilinear&downsize=1440px:*");
+  background-size: cover;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  padding-top: 160px;
+}
+
+.landing::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.landing_btn {
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.landing .col-md-10 {
+  position: absolute;
+  border-right: 10px solid black;
+  margin-bottom: auto;
+}
+
+.dropdown-item:active {
+  background-color: black;
+  color: white;
+}

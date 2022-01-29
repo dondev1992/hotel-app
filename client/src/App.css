@@ -1,0 +1,15 @@
+.App {
+  text-align: left;
+
+  background-color: rgb(206, 141, 77);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.background-image {
+  background-image: url(./assets/webb-dark.png);
+}
