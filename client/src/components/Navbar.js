@@ -14,9 +14,19 @@ function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid px-5">
-          <a className="navbar-brand" href="/home" style={{ fontSize: "30px" }}>
-            Luxury Collection Hotel
-          </a>
+          {!user ? (
+            <a className="navbar-brand" href="/" style={{ fontSize: "30px" }}>
+              Luxury Collection Hotel
+            </a>
+          ) : (
+            <a
+              className="navbar-brand"
+              href="/home"
+              style={{ fontSize: "30px" }}
+            >
+              Luxury Collection Hotel
+            </a>
+          )}
           <button
             className="navbar-toggler"
             type="button"
