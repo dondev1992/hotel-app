@@ -24,6 +24,10 @@ function AdminRooms() {
     getAllRooms();
   }, []);
 
+  const formatToCurrency = (amount) => {
+    return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  };
+
   return (
     <div className="row mt-2">
       <div className="col-md-12">
@@ -49,7 +53,7 @@ function AdminRooms() {
                     <td>{room._id}</td>
                     <td>{room.name}</td>
                     <td>{room.type}</td>
-                    <td>{room.rentperday}</td>
+                    <td>{formatToCurrency(room.rentperday / 100)}</td>
                     <td>{room.maxcount}</td>
                     <td>{room.phonenumber}</td>
                   </tr>

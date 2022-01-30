@@ -80,6 +80,10 @@ function Bookingscreen({ match }) {
     }
   }
 
+  const formatToCurrency = (amount) => {
+    return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  };
+
   return (
     <div className="container" style={{ height: "100vh" }}>
       {loading ? (
@@ -114,8 +118,17 @@ function Bookingscreen({ match }) {
                     <h1>Amount</h1>
                     <hr />
                     <p>Total Nights: {totalNights}</p>
-                    <p>Amount per Night: ${room.rentperday}</p>
-                    <p>Total Amount: ${totalAmount}</p>
+                    <p>
+                      Amount per Night:{" "}
+                      {formatToCurrency(room.rentperday / 100)}
+                    </p>
+                    <p>Tax: {formatToCurrency((totalAmount * 0.075) / 100)}</p>
+                    <p>
+                      Total Amount:{" "}
+                      {formatToCurrency(
+                        totalAmount / 100 + (totalAmount * 0.075) / 100
+                      )}
+                    </p>
                   </b>
                 </div>
                 <div style={{ float: "right" }}>

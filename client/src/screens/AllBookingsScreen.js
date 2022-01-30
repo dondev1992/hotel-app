@@ -92,6 +92,10 @@ export function MyBookings() {
     }
   }
 
+  const formatToCurrency = (amount) => {
+    return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  };
+
   return (
     <div>
       <div className="row">
@@ -113,7 +117,8 @@ export function MyBookings() {
                       <b>Check Out:</b> {booking.checkOutDate}
                     </p>
                     <p>
-                      <b>Amount:</b> {booking.totalAmount}
+                      <b>Amount:</b>{" "}
+                      {formatToCurrency(booking.totalAmount / 100)}
                     </p>
                     <p>
                       <b>Status:</b>{" "}

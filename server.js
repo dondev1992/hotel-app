@@ -17,11 +17,11 @@ app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/bookings", bookingsRoute);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the Luxury Collentions API");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to the Luxury Collentions API");
+// });
 
-// if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV !== "development") {
 //   app.use(express.static("client/build"));
 // }
 
@@ -31,6 +31,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server running on nodemon`));
+app.listen(PORT, () => console.log(`Server running on nodemon`));
