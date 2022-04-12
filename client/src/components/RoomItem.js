@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AOS from "aos";
@@ -13,6 +13,14 @@ function RoomItem({ room, checkInDate, checkOutDate }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+  });
 
   return (
     <div className="row bs" data-aos="fade-up">
@@ -32,7 +40,7 @@ function RoomItem({ room, checkInDate, checkOutDate }) {
           <p>Type: {room.type}</p>
         </b>
         <div style={{ float: "right" }}>
-          {checkInDate && checkOutDate && (
+          {user && checkInDate && checkOutDate && (
             <Link to={`/book/${room._id}/${checkInDate}/${checkOutDate}`}>
               <button className="btn btn-primary m-2">Book Now</button>
             </Link>

@@ -118,7 +118,10 @@ export function MyBookings() {
                     </p>
                     <p>
                       <b>Amount:</b>{" "}
-                      {formatToCurrency(booking.totalAmount / 100)}
+                      {formatToCurrency(
+                        booking.totalAmount / 100 +
+                          (booking.totalAmount * 0.075) / 100
+                      )}
                     </p>
                     <p>
                       <b>Status:</b>{" "}

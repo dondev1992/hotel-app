@@ -18,13 +18,14 @@ function Bookingscreen({ match }) {
   const [room, setRoom] = useState();
   const [totalAmount, setTotalAmount] = useState();
 
-  const roomid = match.params.roomid;
+  // const roomid = match.params.roomid;
   const checkInDate = moment(match.params.checkInDate, "MM-DD-YYYY");
   const checkOutDate = moment(match.params.checkOutDate, "MM-DD-YYYY");
 
   const totalNights = moment.duration(checkOutDate.diff(checkInDate)).asDays();
 
   useEffect(() => {
+    //Retreive user and selected room data
     async function fetchData() {
       if (!localStorage.getItem("currentUser")) {
         window.location.reload = "/login";
@@ -113,16 +114,24 @@ function Bookingscreen({ match }) {
                   <p>Check Out Date: {match.params.checkOutDate}</p>
                   <p>Max Count: {room.maxcount}</p>
                 </b>
+                <br />
+                <br />
                 <div style={{ textAlign: "right" }}>
                   <b>
                     <h1>Amount</h1>
                     <hr />
                     <p>Total Nights: {totalNights}</p>
+
                     <p>
                       Amount per Night:{" "}
                       {formatToCurrency(room.rentperday / 100)}
                     </p>
-                    <p>Tax: {formatToCurrency((totalAmount * 0.075) / 100)}</p>
+                    <p style={{ fontSize: 12 }}>
+                      Sub Total: {formatToCurrency(totalAmount / 100)}
+                    </p>
+                    <p style={{ fontSize: 12 }}>
+                      Tax: {formatToCurrency((totalAmount * 0.075) / 100)}
+                    </p>
                     <p>
                       Total Amount:{" "}
                       {formatToCurrency(

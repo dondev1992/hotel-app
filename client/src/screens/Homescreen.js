@@ -19,6 +19,8 @@ function Homescreen() {
   const [searchKey, setsearchKey] = useState("");
   const [type, setType] = useState("all");
 
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -100,6 +102,12 @@ function Homescreen() {
     }
   }
 
+  function enabled() {
+    if (!user) {
+      window.location.href = "/login";
+    }
+  }
+
   return (
     <div className="container" style={{ height: "200vh" }}>
       <div className="row mt-3 px-1 bs justify-content-center">
@@ -108,6 +116,7 @@ function Homescreen() {
             format="MM-DD-YYYY"
             onChange={filterByDate}
             allowClear="false"
+            onCalendarChange={enabled}
           />
         </div>
         <div className="col-md-5">
