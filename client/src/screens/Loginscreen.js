@@ -59,10 +59,23 @@ function Loginscreen() {
                 setPassword(e.target.value);
               }}
             />
-
-            <button className="btn btn-primary mt-3" onClick={login}>
-              Login
-            </button>
+            <div className="bottom-row">
+              <button className="btn btn-primary mt-3" onClick={login}>
+                Login
+              </button>
+              <div className="mt-3 bottom-row">
+                <div className="px-2 mt-2">
+                  <p style={{ fontSize: 10, fontWeight: 700 }}>
+                    Don't have an account?{" "}
+                  </p>
+                </div>
+                <div className="m-1">
+                  <a href="/register" className="register-link">
+                    Register here
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

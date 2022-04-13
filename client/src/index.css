@@ -19,8 +19,17 @@ code {
     monospace;
 }
 
+.register-link {
+  color: rgb(206, 141, 77) !important;
+}
+
+.register-link:hover {
+  color: black !important;
+}
+
 .navbar {
   background-color: black !important;
+  width: 101%;
 }
 
 .nav-link {
@@ -153,4 +162,10 @@ h2 {
 .dropdown-item:active {
   background-color: black;
   color: white;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center !important;
 }

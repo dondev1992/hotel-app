@@ -17,17 +17,17 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <ScrollToTop />
-        <Route path="/home" exact component={Homescreen} />
+        <Route path="/home" component={Homescreen} />
         <Route
           path="/book/:roomid/:checkInDate/:checkOutDate"
           exact
           component={Bookingscreen}
         />
-        <Route path="/register" exact component={Registerscreen} />
-        <Route path="/login" exact component={Loginscreen} />
-        <Route path="/profile" exact component={Profilescreen} />
-        <Route path="/bookings" exact component={AllBookingsScreen} />
-        <Route path="/admin" exact component={Adminscreen} />
+        <Route path="/register" component={Registerscreen} />
+        <Route path="/login" component={Loginscreen} />
+        <Route path="/profile" component={Profilescreen} />
+        <Route path="/bookings" component={AllBookingsScreen} />
+        <Route path="/admin" component={Adminscreen} />
         <Route path="/" exact component={Landingscreen} />
       </BrowserRouter>
     </div>
