@@ -17,14 +17,6 @@ app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/bookings", bookingsRoute);
 
-// app.get("/", (req, res) => {
-//   res.send("Welcome to the Luxury Collentions API");
-// });
-
-// if (process.env.NODE_ENV !== "development") {
-//   app.use(express.static("client/build"));
-// }
-
 app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.get("*", (req, res) => {
