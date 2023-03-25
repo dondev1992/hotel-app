@@ -34,7 +34,7 @@ function Loginscreen() {
 
   return (
     <div style={{ height: "100vh" }}>
-      {loading && <Loader />}
+      {loading && <Loader loading={loading} />}
       {error && <Error message="Invalid username or password" />}
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">

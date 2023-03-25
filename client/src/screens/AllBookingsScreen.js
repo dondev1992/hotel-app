@@ -7,6 +7,9 @@ import { Tag } from "antd";
 
 const { TabPane } = Tabs;
 
+/**
+ * @description Contains the bookings screen and profile screen
+ */
 function AllBookingsScreen() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -15,6 +18,7 @@ function AllBookingsScreen() {
       window.location.href = "/login";
     }
   });
+  // Creates the profile screen
   return (
     <div className="mx-5 mt-5" style={{ height: "100vh" }}>
       <Tabs defaultActiveKey="2" className="bs">
@@ -43,12 +47,16 @@ function AllBookingsScreen() {
 
 export default AllBookingsScreen;
 
+/**
+ * @description Creates the booking screen
+ */
 export function MyBookings() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
+  // Fetches all bookings under the current user id
   useEffect(() => {
     async function bookingsByUserId() {
       try {
@@ -69,6 +77,7 @@ export function MyBookings() {
     bookingsByUserId();
   }, []);
 
+  // Function to cancel bookings
   async function cancelBooking(bookingid, roomid) {
     try {
       setLoading(true);
@@ -95,12 +104,12 @@ export function MyBookings() {
   const formatToCurrency = (amount) => {
     return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
   };
-
+  // Creates booking cards for each booking
   return (
     <div>
       <div className="row">
         <div className="col-md-6">
-          {loading && <Loader />}
+          {loading && <Loader loading={loading} />}
           {bookings &&
             bookings.map((booking) => {
               return (
@@ -136,7 +145,7 @@ export function MyBookings() {
                       )}
                     </p>
                   </div>
-
+                  {/* If any bookings exist, display cancel booking button */}
                   {booking.status !== "cancelled" && (
                     <div className="text-end">
                       <button

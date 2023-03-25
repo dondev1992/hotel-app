@@ -7,7 +7,13 @@ import AdminAddRoom from "../components/AdminAddRoom";
 
 const { TabPane } = Tabs;
 
+/**
+ * @description Creates the Admin panel with tabs that display all bookings, 
+ * room types, add room screen, and users information
+ */
 function Adminscreen() {
+  /* On first mount, checks if the current user role is 'Admin' or not.
+  If not, reutrn to the home screen */
   useEffect(() => {
     if (!JSON.parse(localStorage.getItem("currentUser")).isAdmin) {
       window.location.href = "/home";

@@ -100,7 +100,7 @@ export function MyBookings() {
     <div>
       <div className="row">
         <div className="col-md-6">
-          {loading && <Loader />}
+          {loading && <Loader loading={loading} />}
           {bookings &&
             bookings.map((booking) => {
               return (

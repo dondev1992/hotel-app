@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { css } from "@emotion/react";
 import GridLoader from "react-spinners/GridLoader";
 
-function Loader() {
-  let [loading, setLoading] = useState(true);
+function Loader({ loading }) {
 
   const override = css`
     display: block;

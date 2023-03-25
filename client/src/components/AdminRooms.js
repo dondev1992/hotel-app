@@ -31,7 +31,7 @@ function AdminRooms() {
   return (
     <div className="row mt-2">
       <div className="col-md-12">
-        {loading && <Loader />}
+        {loading && <Loader loading={loading} />}
         <h1>Rooms</h1>
         <table className="table table-bordered table-dark">
           <thead className="bs">

@@ -12,6 +12,10 @@ AOS.init({
   duration: 500,
 });
 
+/**
+ * @description Creates a booking reservation and process the credit card payment
+ * @param {prop} match 
+ */
 function Bookingscreen({ match }) {
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
@@ -25,7 +29,7 @@ function Bookingscreen({ match }) {
   const totalNights = moment.duration(checkOutDate.diff(checkInDate)).asDays();
 
   useEffect(() => {
-    //Retreive user and selected room data
+    //Retreive user and the selected room data
     async function fetchData() {
       if (!localStorage.getItem("currentUser")) {
         window.location.reload = "/login";
@@ -49,6 +53,11 @@ function Bookingscreen({ match }) {
     fetchData();
   }, []);
 
+  /*
+  Function thats executed after a successful credit transaction that creates a new 
+  reservation and saves it to the mongDB. Then navigates the user to their active 
+  bookings page to see all of there bookings 
+  */
   async function onToken(token) {
     console.log(token);
     const bookingDetails = {
@@ -63,9 +72,8 @@ function Bookingscreen({ match }) {
 
     try {
       setLoading(true);
-      const result = (
-        await axios.post("/api/bookings/bookroom", bookingDetails)
-      ).data;
+
+      await axios.post("/api/bookings/bookroom", bookingDetails).data;
       setLoading(false);
       Swal.fire(
         "Congratulations",
@@ -88,7 +96,7 @@ function Bookingscreen({ match }) {
   return (
     <div className="container" style={{ height: "100vh" }}>
       {loading ? (
-        <Loader />
+        <Loader loading={loading} />
       ) : error ? (
         <Error />
       ) : (
@@ -146,7 +154,7 @@ function Bookingscreen({ match }) {
                     currency="USD"
                     shippingAddress
                     amount={totalAmount}
-                    stripeKey="pk_test_51JtG4sHWKYEE9K0Y7yBBHQN4MT3E0DfcUOelcHevjC4NKeAxeC5fXIaQjRwxddvNTNMVjvOIgrSYbskuzbsA06SL00jnXVEydT"
+                        stripeKey={process.env.REACT_APP_STRIPE}
                   >
                     <button className="btn btn-primary">Pay Now</button>
                   </StripeCheckout>

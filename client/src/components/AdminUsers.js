@@ -26,7 +26,7 @@ export function AdminUsers() {
   return (
     <div className="row mt-2">
       <div className="col-md-12">
-        {loading && <Loader />}
+        {loading && <Loader loading={loading} />}
         <h1>Users</h1>
         <table className="table table-dark table-bordered">
           <thead>

@@ -5,10 +5,15 @@ import moment from "moment";
 import RoomItem from "../components/RoomItem";
 import Loader from "../components/Loader";
 import { DatePicker } from "antd";
+import Error from "../components/Error";
 import "../App.css";
 
 const { RangePicker } = DatePicker;
 
+/**
+ * @description Creates home page with datepicker and a column of the hotel rooms
+ * @returns 
+ */
 function Homescreen() {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState();
@@ -21,6 +26,7 @@ function Homescreen() {
 
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
+  // On first mount, fetches all the room data from the mongoDB database
   useEffect(() => {
     async function fetchData() {
       try {
@@ -41,12 +47,13 @@ function Homescreen() {
     fetchData();
   }, []);
 
+  // Function for fetching rooms that are not reserved with the given checkin and checkout date ranges
   function filterByDate(dates) {
     setCheckInDate(moment(dates[0]).format("MM-DD-YYYY"));
     setCheckOutDate(moment(dates[1]).format("MM-DD-YYYY"));
 
-    var tempRooms = [];
-    var availability = false;
+    let tempRooms = [];
+    let availability = false;
     for (const room of duplicateRooms) {
       if (room.currentbookings.length > 0) {
         for (const booking of room.currentbookings) {
@@ -76,10 +83,10 @@ function Homescreen() {
       }
 
       setRooms(tempRooms);
-      console.log(tempRooms);
     }
   }
 
+  // Function for filtering rooms by name
   function filterBySearch() {
     const filterRooms = duplicateRooms.filter((room) =>
       room.name.toLowerCase().includes(searchKey.toLowerCase())
@@ -102,6 +109,7 @@ function Homescreen() {
     }
   }
 
+  // Checks if there is a logged in user. If not, returns to login page
   function enabled() {
     if (!user) {
       window.location.href = "/login";
@@ -147,8 +155,9 @@ function Homescreen() {
       </div>
 
       <div className="row justify-content-center mt-5">
+        {error && <Error message="Problem Retrieving Rooms" />}
         {loading ? (
-          <Loader />
+          <Loader loading={loading} />
         ) : (
           rooms.map((room) => {
             return (

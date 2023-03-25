@@ -47,7 +47,7 @@ function AdminAddRoom() {
 
   return (
     <div className="row mt-2">
-      {loading && <Loader />}
+      {loading && <Loader loading={loading} />}
 
       <h1>Add Room</h1>
       <div className="col-md-5">

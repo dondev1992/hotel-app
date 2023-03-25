@@ -23,7 +23,7 @@ function Registerscreen() {
       };
       try {
         setLoading(true);
-        const result = await axios.post("/api/users/register", user).data;
+        await axios.post("/api/users/register", user).data;
         setLoading(false);
         setSuccess(true);
 
@@ -44,7 +44,7 @@ function Registerscreen() {
 
   return (
     <div className="container" style={{ height: "100vh" }}>
-      {loading && <Loader />}
+      {loading && <Loader loading={loading} />}
       {error && <Error message="Registration Failed" />}
       <div className="row justify-content-center mt-5">
         {success && <Success message="Registration is Successful." />}
