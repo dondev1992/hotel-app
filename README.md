@@ -13,6 +13,9 @@ The app is deployed using heroku.com [HERE](https://hotel-room-app.herokuapp.com
 ### Dependencies
 
 * React
+* HTML
+* CSS
+* JavaScript
 * React-stripe-checkout
 * Axios
 * React-Router-Dom
